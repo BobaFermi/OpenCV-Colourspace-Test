@@ -112,9 +112,9 @@ def main():
                 hists[:, 6, i] = hhist.ravel()
                 hists[:, 7, i] = shist.ravel()
                 hists[:, 8, i] = vhist.ravel()
-                meanpx[0, i] = np.mean(ROI[:, :, 2])    #save all mean pixel values in a separate array for saving to a file
+                meanpx[0, i] = np.mean(ROI[:, :, 0])    #save all mean pixel values in a separate array for saving to a file
                 meanpx[1, i] = np.mean(ROI[:, :, 1])
-                meanpx[2, i] = np.mean(ROI[:, :, 0])
+                meanpx[2, i] = np.mean(ROI[:, :, 2])
                 meanpx[3, i] = np.mean(CIELAB[:, :, 0])
                 meanpx[4, i] = np.mean(CIELAB[:, :, 1])
                 meanpx[5, i] = np.mean(CIELAB[:, :, 2])
@@ -122,7 +122,7 @@ def main():
                 meanpx[7, i] = np.mean(HSV[:, :, 1])
                 meanpx[8, i] = np.mean(HSV[:, :, 2])
                 #display the ROI in all the values from the different colour maps
-                cv2.imshow("Different colour maps", np.concatenate((ROI[:, :, 2], ROI[:, :, 1], ROI[:, :, 0],
+                cv2.imshow("Different colour maps", np.concatenate((ROI[:, :, 0], ROI[:, :, 1], ROI[:, :, 2],
                                                                     CIELAB[:, :, 0], CIELAB[:, :, 1], CIELAB[:, :, 2],
                                                                     HSV[:, :, 0], HSV[:, :, 1], HSV[:, :, 2])))
                 keypress = cv2.waitKey(1)                   #wait 1 ms, accept keyboard input
