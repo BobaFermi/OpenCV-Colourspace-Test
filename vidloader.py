@@ -97,12 +97,12 @@ def main():
                 rhist = cv2.calcHist(ROI, [2], None, [256], [0, 256])           #histogram for BGR red
                 ghist = cv2.calcHist(ROI, [1], None, [256], [0, 256])           #histogram for BGR green
                 bhist = cv2.calcHist(ROI, [0], None, [256], [0, 256])           #histogram for BGR blue
-                cielhist = cv2.calcHist(CIELAB, [0], None, [256], [0, 256])     #hist for CIELAB light
-                cieahist = cv2.calcHist(CIELAB, [1], None, [256], [0, 256])     #hist for CIELAB
-                ciebhist = cv2.calcHist(CIELAB, [2], None, [256], [0, 256])     #hist for CIELAB
+                cielhist = cv2.calcHist(CIELAB, [0], None, [256], [0, 256])     #hist for CIELAB lightness
+                cieahist = cv2.calcHist(CIELAB, [1], None, [256], [0, 256])     #hist for CIELAB green-red
+                ciebhist = cv2.calcHist(CIELAB, [2], None, [256], [0, 256])     #hist for CIELAB blue-yellow
                 hhist = cv2.calcHist(HSV, [0], None, [256], [0, 256])           #hist for HSV hue
                 shist = cv2.calcHist(HSV, [1], None, [256], [0, 256])           #hist for HSV saturation
-                vhist = cv2.calcHist(HSV, [2], None, [256], [0, 256])           #hist for HSV 
+                vhist = cv2.calcHist(HSV, [2], None, [256], [0, 256])           #hist for HSV value
                 hists[:, 0, i] = rhist.ravel()      #Now we want to store all hists in the same array to save in a file
                 hists[:, 1, i] = ghist.ravel()      #ravel is necessary so each hist has elements ((256,)) instead of
                 hists[:, 2, i] = bhist.ravel()      #((256,1)), which wouldn't work
