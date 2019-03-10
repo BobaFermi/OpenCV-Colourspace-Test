@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 #select what gets plotted
 bplothists = False
 bplotmeanpx = True
+plottitles = ['BGR Blue', 'BGR Green', 'BGR Red', 
+              'CIELAB Lightness', 'CIELAB G-R', 'CIELAB B-Y', 
+              'HSV Hue', 'HSV Saturation', 'HSV Value']
 
 def main():
     if bplothists:
@@ -25,6 +28,7 @@ def plotmeanpx():
     for i in range(0, 3):       #nested for loops to point to 2D indices
         for j in range(0, 3):
             axs[j, i].plot(meanpx[3 * i + j, :])    #use i and j to count from 0-8
+            axs[i, j].set_title(plottitles[i * 3 + j])
     plt.show()                                      #figure doesn't open without this
 
 def plothists():
@@ -41,8 +45,9 @@ def plothists():
     for k in range(0, np.shape(hists)[2]):  #nested for loops, draw all histograms for each frame
         for i in range(0, 3):                           
             for j in range(0, 3):
-                axs2[j, i].cla()            #clear the axis so plots don't accumulate on top of one another
-                axs2[j, i].plot(hists[:, 3 * i + j, k])     #plot all the hists for one frame
+                axs2[i, j].cla()            #clear the axis so plots don't accumulate on top of one another
+                axs2[i, j].plot(hists[:, 3 * i + j, k])     #plot all the hists for one frame
+                axs2[i, j].set_title(plottitles[i * 3 + j])
         plt.draw()                                          #draw after all plots have been set
         plt.pause(0.01)                                     #supposed to be a delay in seconds, takes far longer
 
