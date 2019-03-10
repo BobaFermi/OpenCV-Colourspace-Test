@@ -13,7 +13,7 @@ def main():
         fig, axs = plt.subplots(3, 3, sharex=True, tight_layout=True)  
         for i in range(0, 3):       #nested for loops to point to 2D indices
             for j in range(0, 3):
-                axs[j, i].plot(meanpx[:, 3 * i + j])    #use i and j to count from 0-8
+                axs[j, i].plot(meanpx[3 * i + j, :])    #use i and j to count from 0-8
         plt.show()                                      #figure doesn't open without this
     if plothists:
         plt.ion()               #interactive mode on, allows to redraw on same plots repeatedly
